@@ -4,6 +4,9 @@
     <string name="tab_text_1">Contact Us</string>
     <string name="tab_text_2">Images</string>
     <string name="tab_text_3">View Images</string>
+    <string name="tab_text_4">New Task</string>
     <string name="title_activity_tabactivity">tabactivity</string>
     <string name="first_name">Enter Name</string>
+
+    <string name="hello_world">Hello Square World!</string>
 </resources>

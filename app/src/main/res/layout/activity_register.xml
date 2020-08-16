@@ -8,6 +8,21 @@
     android:orientation="vertical"
     tools:context=".register">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_below="@+id/rl"
+        android:layout_alignBottom="@+id/rl1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="150dp"
+        android:foregroundGravity="center_vertical|center"
+        android:visibility="gone" />
+
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="wrap_content"
@@ -22,15 +37,15 @@
             android:scaleType="fitCenter"
              />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="50dp"
-            android:foregroundGravity="center_vertical"
-            android:visibility="gone" />
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:layout_marginBottom="50dp"-->
+<!--            android:foregroundGravity="center_vertical"-->
+<!--            android:visibility="gone" />-->
 
     </RelativeLayout>
 
@@ -166,6 +181,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l6"
             android:layout_width="match_parent"
@@ -229,7 +245,69 @@
             android:text="Tap To Select Date"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="20sp" />/>
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l6"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/white"
+            app:passwordToggleEnabled="true"
+            android:visibility="invisible">
+
+            <EditText
+                android:id="@+id/etteam"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:height="48dp"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Team"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l7"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/white"
+            app:passwordToggleEnabled="true"
+            android:visibility="invisible">
+
+            <EditText
+                android:id="@+id/etposition"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:height="48dp"
+                android:background="@drawable/et_bg"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Position"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </RelativeLayout>

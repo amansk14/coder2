@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+<!--    tools:context=".EditProfile">-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/changepassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="98dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_toEndOf="@+id/rl"
+        app:srcCompat="@drawable/ic_restpass" />
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp">
+
+<!--        <ImageView-->
+<!--            android:layout_width="94dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="@drawable/logo"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            />-->
+
+        <ImageView
+            android:id="@+id/Editimage"
+            android:layout_width="94dp"
+            android:layout_height="65dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_photo" />
+
+        <TextView
+            android:layout_width="94dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Editimage"
+            android:layout_alignEnd="@+id/Editimage"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="-4dp"
+            android:layout_marginEnd="-13dp"
+            android:scaleType="fitCenter"
+            android:text="Edit Image" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="50dp"
+            android:foregroundGravity="center_vertical"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="406dp"
+        android:layout_below="@+id/rl"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="0dp"
+        android:padding="30dp"
+        tools:visibility="visible">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l1"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:height="48dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/black">
+
+            <EditText
+                android:id="@+id/PfullName"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="0dp"
+                android:height="48dp"
+                android:autofillHints="no"
+                android:background="@drawable/et_bg1"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/first_name"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+
+                android:paddingRight="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/black">
+
+            <EditText
+                android:id="@+id/PEmail"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/et_bg1"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l3"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/black">
+
+            <EditText
+                android:id="@+id/PPhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:height="48dp"
+                android:background="@drawable/et_bg1"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Phone No"
+                android:inputType="number"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l4"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/black"
+            >
+
+            <EditText
+                android:id="@+id/PTeam"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:height="48dp"
+                android:background="@drawable/et_bg1"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Team or Company Name"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/l5"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="@color/black"
+            >
+
+            <EditText
+                android:id="@+id/PPosition"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:height="48dp"
+                android:background="@drawable/et_bg1"
+                android:fontFamily="sans-serif-medium"
+                android:hint="Position In team or company"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnsave"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/rl1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="84dp"
+        android:background="@drawable/btn_bg1"
+
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="Save Profile"
+        android:textAllCaps="false"
+
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+
+
+</RelativeLayout>

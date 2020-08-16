@@ -8,4 +8,7 @@
     <color name="grad_start">#19AA88</color>
     <color name="grad_end">#23A7D8</color>
     <color name="blue">#25808A98</color>
+    <color name="black">#0C0000</color>
+    <color name="red">#DF1616</color>
+
 </resources>

@@ -55,7 +55,7 @@ public class register extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
-    private EditText etmail,etpass,etpass2,etfname,etlname,etphno;
+    private EditText etmail,etpass,etpass2,etfname,etteam,etphno,etposition;
     private TextView etdob;
     private ProgressBar progressBar;
 
@@ -110,7 +110,8 @@ public class register extends AppCompatActivity {
         etmail =  findViewById(R.id.etmail);
         etpass =  findViewById(R.id.etpass);
         etfname =  findViewById(R.id.etfname);
-        etlname =  findViewById(R.id.etfname);
+        etteam =  findViewById(R.id.etteam);
+        etposition = findViewById(R.id.etposition);
         etdob = (TextView) findViewById(R.id.etdob);
         etphno =  findViewById(R.id.etphno);
         etpass2 =  findViewById(R.id.etpass2);
@@ -154,11 +155,13 @@ public class register extends AppCompatActivity {
                 final String email = etmail.getText().toString().trim();
                 final String phno = etphno.getText().toString().trim();
                 final String dob = etdob.getText().toString().trim();
+                final String team = etteam.getText().toString().trim();
+                final String position = etposition.getText().toString().trim();
                 String password = etpass.getText().toString().trim();
                 String password2 = etpass2.getText().toString().trim();
 
                 if (TextUtils.isEmpty(fname)){
-                    Toast.makeText(register.this, "This Field Cannot Be Empty" ,Toast.LENGTH_SHORT).show();
+                    etfname.setError("Enter this field");
                     return;
                 }
               /*  if (TextUtils.isEmpty(lname)){
@@ -167,33 +170,33 @@ public class register extends AppCompatActivity {
                     return;
                 }*/
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    Toast.makeText(register.this, "This Field Cannot Be Empty" ,Toast.LENGTH_SHORT).show();
+                    etmail.setError("Enter the Valid Email");
                     return;
                 }
                 if (TextUtils.isEmpty(phno)){
-                    Toast.makeText(register.this, "Please Enter Valid Email" ,Toast.LENGTH_SHORT).show();
+                    etphno.setError("Enter this field");
                     return;
                 }
                 if (TextUtils.isEmpty(dob)){
-                    Toast.makeText(register.this, "This Field Cannot Be Empty" ,Toast.LENGTH_SHORT).show();
+                    etdob.setError("Enter this field");
                     return;
                 }
                 if (TextUtils.isEmpty(password)){
-                    Toast.makeText(register.this, "This Field Cannot Be Empty" ,Toast.LENGTH_SHORT).show();
+                    etpass.setError("Enter this field");
                     return;
                 }
                 if (TextUtils.isEmpty(password2)){
-                    Toast.makeText(register.this, "This Field Cannot Be Empty" ,Toast.LENGTH_SHORT).show();
+                    etpass2.setError("Enter this field");
                     return;
                 }
 
-                if(password.length()<6){
-                    Toast.makeText(register.this, "Password Too Short" , Toast.LENGTH_SHORT).show();
-                }
-                if (phno.length() != 10){
-
-                    Toast.makeText(register.this, "Phone No must be 0f 10 digit" , Toast.LENGTH_SHORT).show();
-                }
+//                if(password.length()<6){
+//                    Toast.makeText(register.this, "Password Too Short" , Toast.LENGTH_SHORT).show();
+//                }
+//                if (phno.length() != 10){
+//
+//                    Toast.makeText(register.this, "Phone No must be 0f 10 digit" , Toast.LENGTH_SHORT).show();
+//                }
 
 
 
@@ -201,50 +204,95 @@ public class register extends AppCompatActivity {
                 //password verify and signup
                 if(password.equals(password2)) {
 
-                        progressBar.setVisibility(View.VISIBLE);
-                        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        progressBar.setVisibility(View.GONE);
-                                        if (task.isSuccessful()) {
-                                            // Sign in success, update UI with the signed-in user's information
-                                            user userreg =new user (
-                                                    fname,
-                                                    email,
-                                                    phno,
-                                                    dob
-                                            );
-                                            FirebaseDatabase.getInstance().getReference("user")
-                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                    .setValue(userreg).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(register.this, "Resister Success", Toast.LENGTH_LONG).show();
-                                                        startActivity(new Intent(register.this, tabactivity.class));
+                    if(password.length()>6) {
 
-                                                    }
-                                                    else {
-                                                        Toast.makeText(register.this, "Resister Not Successfull" ,Toast.LENGTH_LONG).show();
-                                                    }
-                                                }
-                                            });
 
-                                        } else {
-                                            // If sign in fails, display a message to the user.
-                                            Toast.makeText(register.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                        if (phno.length() == 10) {
+
+
+                            progressBar.setVisibility(View.VISIBLE);
+                            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(register.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            progressBar.setVisibility(View.GONE);
+                                            if (task.isSuccessful()) {
+
+
+                                                // Sign in success, update UI with the signed-in user's information
+                                                user userreg = new user(
+                                                        fname,
+                                                        email,
+                                                        phno,
+                                                        dob,
+                                                        team,
+                                                        position
+
+                                                );
+                                                FirebaseDatabase.getInstance().getReference("user")
+                                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                        .setValue(userreg).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if(task.isSuccessful()) {
+
+
+                                                                        Toast.makeText(register.this, "Resister Successfull. Please check your email for Verification", Toast.LENGTH_LONG).show();
+                                                                        //startActivity(new Intent(register.this, tabactivity.class));
+
+                                                                    }else{
+
+                                                                        Toast.makeText(register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                                        //startActivity(new Intent(register.this, tabactivity.class));
+                                                                        progressBar.setVisibility(View.GONE);
+                                                                    }
+                                                                }
+                                                            });
+
+
+
+                                                        } else {
+                                                            Toast.makeText(register.this, "Resister Not Successfull", Toast.LENGTH_LONG).show();
+                                                            progressBar.setVisibility(View.GONE);
+                                                        }
+                                                    }
+                                                });
+
+                                            } else {
+                                                // If sign in fails, display a message to the user.
+                                                Toast.makeText(register.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            // ...
                                         }
-
-                                        // ...
-                                    }
-                                });
-
+                                    });
+                        }
+                        else
+                        {
+                            etphno.setError("Enter a valid Phone no");
+//                            Toast.makeText(register.this, "Enter a valid Phone no", Toast.LENGTH_SHORT).show();
 
                         }
-                        else{
-                            Toast.makeText(register.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                        }
+                    }
+                     else
+                     {
+                         etpass2.setError("Enter this fieldPasswords length must be greather then 6 digits");
+                         etpass.setError("Passwords length must be greather then 6 digits");
+                         //Toast.makeText(register.this, "Passwords length must be greather then 6 digits", Toast.LENGTH_SHORT).show();
+
+                     }
+
+                    }
+                    else
+                    {
+                        etpass2.setError("Passwords do not match");
+                        etpass.setError("Passwords do not match");
+                      //  Toast.makeText(register.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    }
                     }
                 }
 
