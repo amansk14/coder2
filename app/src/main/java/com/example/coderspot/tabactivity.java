@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.coderspot.ui.main.SectionsPagerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +20,7 @@ public class tabactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tabactivity);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -31,7 +33,7 @@ public class tabactivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.getInstance().signOut();
-                Intent intent = new Intent(tabactivity.this,MainActivity.class);
+                Intent intent = new Intent(tabactivity.this,Login.class);
                 startActivity(intent);
             }
         });

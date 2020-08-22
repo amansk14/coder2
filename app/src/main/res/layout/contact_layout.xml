@@ -51,7 +51,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_name" />
+                app:srcCompat="@drawable/ic_n" />
 
             <TextView
                 android:id="@+id/tvname"

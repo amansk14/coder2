@@ -3,9 +3,6 @@
     package="com.example.coderspot">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,13 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
+        <activity android:name=".common.Activity_registrtn_and_login_panel"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".common.OnBording" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-
         <activity
             android:name=".tabactivity"
             android:label="@string/title_activity_tabactivity"
@@ -38,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

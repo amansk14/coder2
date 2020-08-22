@@ -11,4 +11,9 @@
     <color name="black">#0C0000</color>
     <color name="red">#DF1616</color>
 
+    //onbording
+    <color name="onbording">#08775D</color>
+    <color name="background">#659AAE</color>
+
+
 </resources>

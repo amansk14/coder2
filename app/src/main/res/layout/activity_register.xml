@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background1"
     android:orientation="vertical"
+    android:transitionName="transition_register"
     tools:context=".register">
 
     <ProgressBar
@@ -34,18 +35,17 @@
             android:layout_width="94dp"
             android:layout_height="50dp"
             android:background="@drawable/logo"
-            android:scaleType="fitCenter"
-             />
+            android:scaleType="fitCenter" />
 
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressBar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginEnd="0dp"-->
-<!--            android:layout_marginBottom="50dp"-->
-<!--            android:foregroundGravity="center_vertical"-->
-<!--            android:visibility="gone" />-->
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progressBar"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginEnd="0dp"-->
+        <!--            android:layout_marginBottom="50dp"-->
+        <!--            android:foregroundGravity="center_vertical"-->
+        <!--            android:visibility="gone" />-->
 
     </RelativeLayout>
 
@@ -56,7 +56,7 @@
         android:layout_below="@+id/rl"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="0dp"
         android:padding="30dp"
@@ -65,6 +65,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -72,20 +73,24 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:height="48dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:textColorHint="@color/white">
+            android:hint="Name"
+            android:textColorHint="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
 
-            <EditText
+            app:endIconTint="@color/white"
+            app:startIconDrawable="@drawable/ic_n">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etfname"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_marginTop="0dp"
                 android:height="48dp"
-                android:autofillHints="no"
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
-                android:hint="@string/first_name"
+
                 android:inputType="text"
                 android:paddingLeft="15dp"
 
@@ -96,6 +101,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l1"
@@ -103,17 +109,21 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:textColorHint="@color/white">
+            android:hint="Email"
+            android:textColorHint="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/white"
+            app:startIconDrawable="@drawable/ic_loginemail">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etmail"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
-                android:hint="Email"
+
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
@@ -124,6 +134,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l3"
@@ -133,9 +144,15 @@
             android:layout_marginEnd="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:textColorHint="@color/white">
+            android:hint="Phone No"
+            android:textColorHint="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/white"
+            app:startIconDrawable="@drawable/ic_phoneno">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etphno"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -143,7 +160,7 @@
                 android:height="48dp"
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
-                android:hint="Phone No"
+
                 android:inputType="number"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -152,6 +169,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l4"
@@ -161,10 +179,16 @@
             android:layout_marginEnd="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:hint="Password"
             android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true">
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/white"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_loginpass">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etpass"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -172,7 +196,7 @@
                 android:height="48dp"
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
-                android:hint="Password"
+
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -181,9 +205,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/l6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l5"
@@ -193,10 +217,16 @@
             android:layout_marginEnd="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:hint="ReVerify Password"
             android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true">
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/white"
 
-            <EditText
+            app:startIconDrawable="@drawable/ic_loginpass">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etpass2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -204,7 +234,7 @@
                 android:height="48dp"
                 android:background="@drawable/et_bg"
                 android:fontFamily="sans-serif-medium"
-                android:hint="ReVerify Password"
+
                 android:inputType="textPassword"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
@@ -259,8 +289,8 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/etteam"
@@ -290,8 +320,8 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:textColorHint="@color/white"
-            app:passwordToggleEnabled="true"
-            android:visibility="invisible">
+            android:visibility="invisible"
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/etposition"
@@ -330,3 +360,340 @@
         android:textSize="16sp" />
 
 </RelativeLayout>
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@drawable/background1"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".register">-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="10dp"-->
+<!--        android:layout_height="10dp"-->
+<!--        android:layout_below="@+id/rl"-->
+<!--        android:layout_alignBottom="@+id/rl1"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginBottom="150dp"-->
+<!--        android:foregroundGravity="center_vertical|center"-->
+<!--        android:visibility="gone" />-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="50dp">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="94dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="@drawable/logo"-->
+<!--            android:scaleType="fitCenter"-->
+<!--             />-->
+
+<!--&lt;!&ndash;        <ProgressBar&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/progressBar"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginTop="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginEnd="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_marginBottom="50dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:foregroundGravity="center_vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:visibility="gone" />&ndash;&gt;-->
+
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="406dp"-->
+<!--        android:layout_below="@+id/rl"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginEnd="0dp"-->
+<!--        android:padding="30dp"-->
+<!--        tools:visibility="visible">-->
+
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l1"-->
+<!--            android:layout_width="165dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:height="48dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etfname"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="43dp"-->
+<!--                android:layout_marginTop="0dp"-->
+<!--                android:height="48dp"-->
+<!--                android:autofillHints="no"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="@string/first_name"-->
+<!--                android:inputType="text"-->
+<!--                android:paddingLeft="15dp"-->
+
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l1"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etmail"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="49dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="Email"-->
+<!--                android:importantForAutofill="no"-->
+<!--                android:inputType="textEmailAddress"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l3"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etphno"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="52dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:height="48dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="Phone No"-->
+<!--                android:inputType="number"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l4"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:passwordToggleEnabled="true">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etpass"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="46dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:height="48dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="Password"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l6"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l5"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:passwordToggleEnabled="true">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etpass2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:height="48dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="ReVerify Password"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/eydob"-->
+<!--            android:layout_width="84dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l6"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:height="48dp"-->
+<!--            android:background="@drawable/et_bg"-->
+<!--            android:fontFamily="sans-serif-medium"-->
+<!--            android:paddingLeft="15dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingRight="15dp"-->
+<!--            android:text="DOB :"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/etdob"-->
+<!--            android:layout_width="202dp"-->
+<!--            android:layout_height="38dp"-->
+<!--            android:layout_below="@+id/l6"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="37dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_toEndOf="@+id/eydob"-->
+<!--            android:inputType="date"-->
+<!--            android:text="Tap To Select Date"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp" />-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l7"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l6"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:passwordToggleEnabled="true"-->
+<!--            android:visibility="invisible">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etteam"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="46dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:height="48dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="Team"-->
+<!--                android:inputType="text"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/l8"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/l7"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:focusable="true"-->
+<!--            android:focusableInTouchMode="true"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            app:passwordToggleEnabled="true"-->
+<!--            android:visibility="invisible">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etposition"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="46dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:height="48dp"-->
+<!--                android:background="@drawable/et_bg"-->
+<!--                android:fontFamily="sans-serif-medium"-->
+<!--                android:hint="Position"-->
+<!--                android:inputType="text"-->
+<!--                android:paddingLeft="15dp"-->
+<!--                android:paddingRight="15dp"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--    </RelativeLayout>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnregister"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_below="@id/rl1"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:layout_marginEnd="84dp"-->
+<!--        android:background="@drawable/btn_bg"-->
+
+<!--        android:paddingLeft="70dp"-->
+<!--        android:paddingRight="70dp"-->
+<!--        android:text="Register Now"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="16sp" />-->
+
+<!--</RelativeLayout>-->

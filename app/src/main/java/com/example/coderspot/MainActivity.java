@@ -1,200 +1,105 @@
 package com.example.coderspot;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Objects;
+import com.example.coderspot.common.Activity_registrtn_and_login_panel;
+import com.example.coderspot.common.OnBording;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    private static int SPLASH_TIME_OUT = 5000;
 
+    //hookie
+    View first, second, third, fourth, fifth, sixth, seventh, eighth, ninth;
+    TextView t1, t2, t3;
 
+    //animations code
+    Animation topanim, bottomanim, middleanim;
 
-    private static int time = 2000;
-    RelativeLayout rellayout, rellayout2;
-    Handler handler = new Handler();
-    private FirebaseAuth mAuth;
-    Button btnlogin;
-    EditText etpassword, etusername;
-    TextView btnregister,forgotps;
-    ProgressBar progressBar;
-
+    SharedPreferences onBording;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
-            // User is signed in (getCurrentUser() will be null if not signed in)
-            Intent intent = new Intent(MainActivity.this, tabactivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-        final RelativeLayout rellayout = findViewById(R.id.rellayout);
-        final RelativeLayout rellayout2 = findViewById(R.id.rellayout2);
-        final EditText etusername = findViewById(R.id.etusername);
-        final EditText etpassword = findViewById(R.id.etpassword);
-        Button btnlogin = findViewById(R.id.btnlogin);
-        progressBar =findViewById(R.id.progress);
-        progressBar.setVisibility(View.GONE);
-        forgotps=findViewById(R.id.forgotps);
-
-        TextView btnregister = findViewById(R.id.btnregister);
-        btnregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, register.class));
-            }
-        });
-
-        btnlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               mAuth = FirebaseAuth.getInstance();
-               final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-                String email = etusername.getText().toString().trim();
-                String password = etpassword.getText().toString().trim();
-
-                if (TextUtils.isEmpty(password)){
-                    etpassword.setError("Password is required");
-                    return;
-                }
-                if (TextUtils.isEmpty(email)){
-                    etusername.setError("Email is required");
-                    return;
-                }
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    etusername.setError("Enter a valid Email");
-                    return;
-                }
-                if (password.length()<6) {
-                    etpassword.setError("Password must v greater then 6 digits");
-                    return;
-                }
-
-                progressBar.setVisibility(View.VISIBLE);
 
 
-                Toast.makeText(MainActivity.this, "LOADING....", Toast.LENGTH_SHORT).show();
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    if (mAuth.getCurrentUser().isEmailVerified()) {
 
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        // Sign in success, update UI with the signed-in user's information
-                                        startActivity(new Intent(MainActivity.this, tabactivity.class));
+        topanim = AnimationUtils.loadAnimation(this, R.anim.top_anim);
+        bottomanim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
+        middleanim = AnimationUtils.loadAnimation(this, R.anim.middle_anim);
 
+        //hooke
 
-                                    }else{
-
-                                        Toast.makeText(MainActivity.this, "Please Verify Your Email Address",
-                                                Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                } else {
-                                    // If sign in fails, display a message to the user.
-
-                                    Toast.makeText(MainActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
-
-                                }
-
-                                // ...
-                            }
-                        });
-            }
+        first = findViewById(R.id.first_line);
+        second = findViewById(R.id.second_line);
+        third = findViewById(R.id.third_line);
+        fourth = findViewById(R.id.fourth_line);
+        fifth = findViewById(R.id.fifth_line);
+        sixth = findViewById(R.id.sixth_line);
 
 
-        });
+
+        t1 = findViewById(R.id.t1);
+        t2 = findViewById(R.id.t2);
+        t3 = findViewById(R.id.t3);
+
+        //Setting Animation
+        first.setAnimation(topanim);
+        second.setAnimation(topanim);
+        third.setAnimation(topanim);
+        fourth.setAnimation(topanim);
+        fifth.setAnimation(topanim);
+        sixth.setAnimation(topanim);
+
+
+        t1.setAnimation(middleanim);
+        t2.setAnimation(middleanim);
+
+        t3.setAnimation(bottomanim);
+
+        //splash screen
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                rellayout.setVisibility(View.VISIBLE);
-                rellayout2.setVisibility(View.VISIBLE);
+
+                onBording = getSharedPreferences("onBording", MODE_PRIVATE);
+
+                boolean isFirstTime = onBording.getBoolean("firstTime", true);
+
+                if (isFirstTime) {
+
+                    SharedPreferences.Editor editor = onBording.edit();
+                    editor.putBoolean("firstTime", false);
+                    editor.commit();
+                    Intent intent = new Intent(getApplicationContext(), OnBording.class);
+                    startActivity(intent);
+                } else {
+
+                    Intent intent = new Intent(getApplicationContext(), Activity_registrtn_and_login_panel.class);
+                    startActivity(intent);
+
+                }
+                finish();
             }
-        }, time);
-
-        //forgot password reset link
-
-        forgotps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-              final EditText restMail =  new EditText(view.getContext());
-                AlertDialog.Builder passwordRestDialog = new  AlertDialog.Builder(view.getContext());
-                passwordRestDialog.setTitle("Reset Password ?");
-                passwordRestDialog.setMessage("Enter Your Email To Received Reset Link");
-                passwordRestDialog.setView(restMail);
-
-                passwordRestDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //extract the mail and link
-                        String mail=restMail.getText().toString();
-                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(MainActivity.this, "Reset Link Sent To Your Email." ,Toast.LENGTH_LONG).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity.this, "Error ! Reset Link Not Sent." + e.getMessage() ,Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                });
-
-                passwordRestDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //close the dialog
-                    }
-                });
-
-                passwordRestDialog.create().show();
-
-            }
-        });
+        }, SPLASH_TIME_OUT);
 
     }
 }
-
-
-
 
 
 
